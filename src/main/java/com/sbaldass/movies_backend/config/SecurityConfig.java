@@ -5,6 +5,7 @@ import com.sbaldass.movies_backend.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,18 +27,31 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
 
     @Autowired
-    private BcryptEncoder bcryptEncoder;
+    private final BcryptEncoder bcryptEncoder;
 
-    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtAuthFilter jwtAuthFilter) {
+    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtAuthFilter jwtAuthFilter, BcryptEncoder bcryptEncoder) {
         this.userDetailsService = userDetailsService;
         this.jwtAuthFilter = jwtAuthFilter;
+        this.bcryptEncoder = bcryptEncoder;
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests((authorize) ->
                         authorize
-                                .antMatchers("/users/**").permitAll()
+                                .antMatchers(HttpMethod.GET, "/users").hasAuthority("ADMIN")
+                                .antMatchers(HttpMethod.GET, "/users/{id}").permitAll()
+                                .antMatchers(HttpMethod.POST, "/users").permitAll()
+                                .antMatchers(HttpMethod.PUT, "/users/**").permitAll()
+                                .antMatchers(HttpMethod.DELETE, "/users/**").permitAll()
+                                .antMatchers(HttpMethod.POST, "/movies").hasAuthority("ADMIN")
+                                .antMatchers(HttpMethod.PUT, "/movies/**").hasAuthority("ADMIN")
+                                .antMatchers(HttpMethod.DELETE, "/movies/**").hasAuthority("ADMIN")
+                                .antMatchers(HttpMethod.GET, "/movies/**").permitAll()
+                                .antMatchers(HttpMethod.POST, "/tags").hasAuthority("ADMIN")
+                                .antMatchers(HttpMethod.PUT, "/tags/**").hasAuthority("ADMIN")
+                                .antMatchers(HttpMethod.DELETE, "/tags/**").hasAuthority("ADMIN")
+                                .antMatchers(HttpMethod.GET, "/tags/**").permitAll()
                                 .antMatchers("/auth/**").permitAll()
                                 .antMatchers( "/v3/api-docs/**",
                                         "/swagger-ui/**",

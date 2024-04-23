@@ -10,9 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,6 +32,7 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setAvatar(userDto.getAvatar());
         user.setCreatedAt(LocalDate.now());
+        user.setUpdatedAt(LocalDate.now());
 
         Role userRole = roleRepository.findByName(userDto.isAdmin() ? "ROLE_ADMIN" : "ROLE_USER")
                 .orElseThrow(() -> new RuntimeException("Role not found."));
@@ -49,13 +50,17 @@ public class UserService {
         existingUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
         existingUser.setAvatar(userDto.getAvatar());
         existingUser.setCreatedAt(userDto.getCreatedAt());
-        existingUser.setUpdatedAt(LocalDate.now());
+        existingUser.setUpdatedAt(userDto.getUpdatedAt());
+
+        Role userRole = roleRepository.findByName(userDto.isAdmin() ? "ROLE_ADMIN" : "ROLE_USER")
+                .orElseThrow(() -> new RuntimeException("Role not found."));
+        existingUser.setRoles(Collections.singletonList(userRole));
         return userRepository.save(existingUser);
     }
 
 
-    public User findUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+    public Optional<User> findUserById(Long id) {
+        return Optional.ofNullable(userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado.")));
     }
 
     public List<UserDTO> findAllUsers() throws Exception{
@@ -74,18 +79,8 @@ public class UserService {
         usuarioDTO.setAvatar(usuario.getAvatar());
         usuarioDTO.setCreatedAt(usuario.getCreatedAt());
         usuarioDTO.setUpdatedAt(usuario.getUpdatedAt());
-        return usuarioDTO;
-    }
-
-    private User convertToEntity(UserDTO usuario){
-        User usuarioDTO = new User();
-        usuarioDTO.setId(usuario.getId());
-        usuarioDTO.setUsername(usuario.getUsername());
-        usuarioDTO.setEmail(usuario.getEmail());
-        usuarioDTO.setPassword(usuario.getPassword());
-        usuarioDTO.setAvatar(usuario.getAvatar());
-        usuarioDTO.setCreatedAt(usuario.getCreatedAt());
-        usuarioDTO.setUpdatedAt(usuario.getUpdatedAt());
+        List<String> roleName = usuario.getRoles().stream().map(Role::getName).toList();
+        usuarioDTO.setAdmin(roleName.get(0).equals("ROLE_ADMIN"));
         return usuarioDTO;
     }
 

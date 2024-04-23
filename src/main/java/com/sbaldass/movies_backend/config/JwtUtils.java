@@ -73,13 +73,5 @@ public class JwtUtils {
         return claims.getExpiration().after(new Date());
     }
 
-    public String getEmail(Claims claims) {
-        return claims.getSubject();
-    }
-
-    private Object getRoles(Claims claims) {
-        return claims.get("roles");
-    }
-
 
 }

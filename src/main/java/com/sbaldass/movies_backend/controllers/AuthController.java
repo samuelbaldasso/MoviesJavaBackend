@@ -1,6 +1,6 @@
 package com.sbaldass.movies_backend.controllers;
 
-import com.sbaldass.movies_backend.config.JwtToken;
+import com.sbaldass.movies_backend.domain.JwtToken;
 import com.sbaldass.movies_backend.config.JwtUtils;
 import com.sbaldass.movies_backend.domain.User;
 import com.sbaldass.movies_backend.dtos.UserDTO;

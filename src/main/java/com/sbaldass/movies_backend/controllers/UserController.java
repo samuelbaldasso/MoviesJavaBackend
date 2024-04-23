@@ -4,9 +4,11 @@ import com.sbaldass.movies_backend.dtos.UserDTO;
 import com.sbaldass.movies_backend.services.UserService;
 import com.sbaldass.movies_backend.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -20,8 +22,8 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public User getById(@PathVariable Long id) throws Exception {
-    return userService.findUserById(id);
+  public ResponseEntity<User> getById(@PathVariable Long id) throws Exception {
+    return userService.findUserById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
   }
 
   @PostMapping

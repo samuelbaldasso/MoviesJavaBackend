@@ -65,15 +65,4 @@ public class MovieService {
         movieDTO.setTitle(movie.getTitle());
         return movieDTO;
     }
-
-    private Movie convertToEntity(MovieDTO movie){
-        Movie movieDTO = new Movie();
-        movieDTO.setId(movie.getId());
-        movieDTO.setDescription(movie.getDescription());
-        movieDTO.setCreatedAt(movie.getCreatedAt());
-        movieDTO.setUpdatedAt(movie.getUpdatedAt());
-        movieDTO.setNota(movie.getNota());
-        movieDTO.setTitle(movie.getTitle());
-        return movieDTO;
-    }
 }

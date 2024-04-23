@@ -1,4 +1,4 @@
-package com.sbaldass.movies_backend.config;
+package com.sbaldass.movies_backend.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,4 +8,5 @@ import lombok.Data;
 public class JwtToken {
     public String email;
     public String token;
+
 }

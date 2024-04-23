@@ -61,13 +61,4 @@ public class TagService {
         return tagDTO;
     }
 
-    private Tag convertToEntity(TagDTO movieTag){
-        Tag tagDTO = new Tag();
-        tagDTO.setId(movieTag.getId());
-        tagDTO.setCreatedAt(movieTag.getCreatedAt());
-        tagDTO.setUpdatedAt(movieTag.getUpdatedAt());
-        tagDTO.setName(movieTag.getName());
-        return tagDTO;
-    }
-
 }

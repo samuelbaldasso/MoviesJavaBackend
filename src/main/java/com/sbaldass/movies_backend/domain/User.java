@@ -26,6 +26,7 @@ public class User {
     @Email
     private String email;
     private String password;
+
     @ManyToMany
     @JsonManagedReference
     private List<Role> roles = new ArrayList<>();

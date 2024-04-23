@@ -36,7 +36,7 @@ public class TagController {
     }
 
     @PostMapping
-    public Tag addMovie(@RequestBody Tag tag) {
+    public Tag addTag(@RequestBody Tag tag) {
         return tagService.addTag(tag);
     }
 

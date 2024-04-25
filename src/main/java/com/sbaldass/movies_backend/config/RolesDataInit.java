@@ -20,8 +20,7 @@ public class RolesDataInit implements CommandLineRunner {
 
     private void createRoleIfNotFound(String name) {
         roleRepository.findByName(name).orElseGet(() -> {
-            Role newRole = new Role();
-            newRole.setName(name);
+            Role newRole = new Role(name);
             return roleRepository.save(newRole);
         });
     }

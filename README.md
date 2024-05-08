@@ -1,6 +1,6 @@
 # Backend para Aplicação de Filmes com Autenticação JWT e Autorização por Roles - Java / Spring Boot
 
-Este projeto é um backend para uma aplicação de filmes. Ele oferece funcionalidades como autenticação e autorização de usuários, utilizando tokens JWT (JSON Web Tokens) e um sistema de roles. O backend é construído em Java / Spring Boot com o banco de dados PostgreSQL.
+Este projeto é um backend para uma aplicação de filmes. Ele oferece funcionalidades como autenticação e autorização de usuários, utilizando tokens JWT (JSON Web Tokens) e um sistema de roles. O backend é construído em Java / Spring Boot com o banco de dados MySQL via Docker.
 
 ## Exemplos de Recursos
 
@@ -16,7 +16,7 @@ Este projeto é um backend para uma aplicação de filmes. Ele oferece funcional
 
 ## Documentação da API
 
-A documentação completa das APIs está disponível no endpoint `/swagger-ui/`. A documentação é interativa e permite testar os endpoints diretamente pela interface do Swagger.
+A documentação completa das APIs está disponível no endpoint `/swagger-ui/index.html`. A documentação é interativa e permite testar os endpoints diretamente pela interface do Swagger.
 
 ## Instruções de Instalação e Uso
 
@@ -24,15 +24,16 @@ A documentação completa das APIs está disponível no endpoint `/swagger-ui/`.
 
 2. Navegue até a pasta do projeto e instale as dependências: `cd [NOME_DA_PASTA_DO_PROJETO]` e depois execute `mvn install` para gerar a atualização das dependências e o JAR da aplicação (caso desejar).
 
-3. **Instalação do PostgreSQL 14** (Opcional):
-   - Baixe o PostgreSQL 14 do site oficial: [Download PostgreSQL](https://www.postgresql.org/download/).
+3. **Instalação do Docker / MySQL** (Opcional):
+   - Baixe o Docker do site oficial: [Download Docker - Windows, por exemplo](https://docs.docker.com/desktop/install/windows-install/).
    - Siga as instruções de instalação para o seu sistema operacional.
-   - Durante a instalação, defina `postgres` como o nome de usuário e `admin` como a senha para o superusuário do PostgreSQL.
-   - Crie um novo banco de dados chamado `movies`.
+   - Crie um novo banco de dados em um contâiner Docker utilizando este comando:
+  
+   `docker run -d -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=taskdb --name mysqldb -p 3307:3306 mysql:8.0`
+   
+5. Inicie o servidor: execute a aplicação pela classe main da mesma na sua IDE preferida (recomendo Intellij IDEA Community ou Ultimate).
 
-4. Inicie o servidor: execute a aplicação pela classe main da mesma na sua IDE preferida (recomendo Intellij IDEA Community ou Ultimate).
-
-5. Acesse `http://localhost:8080/swagger-ui/` em seu navegador para visualizar a documentação da API.
+6. Acesse `http://localhost:8080/swagger-ui/index.html` em seu navegador para visualizar a documentação da API.
 
 ---
 

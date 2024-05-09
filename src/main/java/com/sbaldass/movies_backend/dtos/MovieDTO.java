@@ -1,20 +1,20 @@
 package com.sbaldass.movies_backend.dtos;
 
-import lombok.AllArgsConstructor;
+import com.sbaldass.movies_backend.models.Cast;
+import com.sbaldass.movies_backend.models.CastType;
+import com.sbaldass.movies_backend.models.Tag;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class MovieDTO {
     private Long id;
     private String title;
+    private Long tagId;
+    private List<Long> castId;
     private String description;
-    private Long userId;
-    private double nota;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private double rating;
 }

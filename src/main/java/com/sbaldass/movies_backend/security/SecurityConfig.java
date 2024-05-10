@@ -1,5 +1,8 @@
 package com.sbaldass.movies_backend.security;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a28bd944e2cf3843a61155dd628de92ea9f2641e
 
 import com.sbaldass.movies_backend.config.BcryptEncoder;
 import com.sbaldass.movies_backend.config.JwtAuthFilter;

@@ -1,6 +1,8 @@
-package com.sbaldass.movies_backend.config;
+package com.sbaldass.movies_backend.security;
 
 
+import com.sbaldass.movies_backend.config.BcryptEncoder;
+import com.sbaldass.movies_backend.config.JwtAuthFilter;
 import com.sbaldass.movies_backend.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

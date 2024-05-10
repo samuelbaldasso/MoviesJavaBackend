@@ -14,7 +14,7 @@ public class MovieDTO {
     private String title;
     private String description;
     private Long userId;
-    private double nota;
+    private double rating;
     private LocalDate createdAt;
     private LocalDate updatedAt;
 }

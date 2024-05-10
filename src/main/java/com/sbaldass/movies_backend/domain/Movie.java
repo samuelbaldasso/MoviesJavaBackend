@@ -20,7 +20,7 @@ public class Movie {
 
     private Long userId;
 
-    private double nota;
+    private double rating;
 
     private LocalDate createdAt;
     private LocalDate updatedAt;

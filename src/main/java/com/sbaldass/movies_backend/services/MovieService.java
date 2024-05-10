@@ -45,7 +45,7 @@ public class MovieService {
         existingMovie.setUserId(movieDTO.getUserId());
         existingMovie.setCreatedAt(LocalDate.now());
         existingMovie.setDescription(movieDTO.getDescription());
-        existingMovie.setNota(movieDTO.getNota());
+        existingMovie.setRating(movieDTO.getRating());
         existingMovie.setTitle(movieDTO.getTitle());
         existingMovie.setUpdatedAt(LocalDate.now());
         return movieRepository.save(existingMovie);
@@ -61,7 +61,7 @@ public class MovieService {
         movieDTO.setDescription(movie.getDescription());
         movieDTO.setCreatedAt(movie.getCreatedAt());
         movieDTO.setUpdatedAt(movie.getUpdatedAt());
-        movieDTO.setNota(movie.getNota());
+        movieDTO.setRating(movieDTO.getRating());
         movieDTO.setTitle(movie.getTitle());
         return movieDTO;
     }

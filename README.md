@@ -7,12 +7,14 @@ Este projeto é um backend para uma aplicação de filmes. Ele oferece funcional
 - **Autenticação de Usuário**: Sistema de login e registro de usuários.
 - **Autorização via JWT**: Após o login, os usuários recebem um token JWT para acessos subsequentes.
 - **Gerenciamento de Filmes**: Funcionalidades para adicionar, visualizar, editar e deletar filmes, assim como gerenciar tags associadas aos filmes.
+- **Testes unitários**: Testes unitários de todos os controllers, repositories e serviços da aplicação.
 
 ## Tecnologias Utilizadas
 
 - **Java / Spring Boot**: Ambiente de execução do servidor.
-- **PostgreSQL**: Banco de dados eficiente para armazenar os dados dos usuários e informações dos filmes.
+- **PostgreSQL**: Banco de dados eficiente para armazenar os dados dos usuários e informações da biblioteca.
 - **JWT (JSON Web Tokens)**: Utilizado para a autenticação e autorização de usuários com base em roles.
+- **JUnit4 / Mockito**: Utilizados para os testes unitários de toda a aplicação.
 
 ## Documentação da API
 

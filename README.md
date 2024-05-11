@@ -12,7 +12,7 @@ Este projeto é um backend para uma aplicação de filmes. Ele oferece funcional
 ## Tecnologias Utilizadas
 
 - **Java / Spring Boot**: Ambiente de execução do servidor.
-- **PostgreSQL**: Banco de dados eficiente para armazenar os dados dos usuários e informações da biblioteca.
+- **MySQL**: Banco de dados eficiente para armazenar os dados dos usuários e informações da biblioteca.
 - **JWT (JSON Web Tokens)**: Utilizado para a autenticação e autorização de usuários com base em roles.
 - **JUnit4 / Mockito**: Utilizados para os testes unitários de toda a aplicação.
 

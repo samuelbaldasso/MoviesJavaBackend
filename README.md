@@ -31,7 +31,10 @@ A documentação completa das APIs está disponível no endpoint `/swagger-ui/in
    - Siga as instruções de instalação para o seu sistema operacional.
    - Crie um novo banco de dados em um contâiner Docker utilizando este comando:
   
-   `docker run -d -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=taskdb --name mysqldb -p 3307:3306 mysql:8.0`
+   ```bash
+   docker pull mysql
+   docker run -d -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=taskdb --name mysqldb -p 3307:3306 mysql:8.0`
+   ```
    
 5. Inicie o servidor: execute a aplicação pela classe main da mesma na sua IDE preferida (recomendo Intellij IDEA Community ou Ultimate).
 

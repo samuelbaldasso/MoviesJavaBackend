@@ -35,7 +35,7 @@ public class MovieServiceTest {
     public void testSave() {
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setDescription("Filme de 2003");
-        movieDTO.setNota(8);
+        movieDTO.setRating(8);
         movieDTO.setTitle("Piratas do Caribe 1");
         movieDTO.setUpdatedAt(LocalDate.now());
         movieDTO.setCreatedAt(LocalDate.now());
@@ -46,7 +46,7 @@ public class MovieServiceTest {
         movie.setCreatedAt(movieDTO.getCreatedAt());
         movie.setUpdatedAt(movieDTO.getUpdatedAt());
         movie.setTitle(movieDTO.getTitle());
-        movie.setNota(movieDTO.getNota());
+        movie.setRating(movieDTO.getRating());
         movie.setUserId(movieDTO.getUserId());
 
         when(movieRepository.save(movie)).thenReturn(movie);
@@ -63,7 +63,7 @@ public class MovieServiceTest {
 
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setDescription("Filme de 2003");
-        movieDTO.setNota(8);
+        movieDTO.setRating(8);
         movieDTO.setTitle("Piratas do Caribe 1");
         movieDTO.setUpdatedAt(LocalDate.now());
         movieDTO.setCreatedAt(LocalDate.now());
@@ -71,7 +71,7 @@ public class MovieServiceTest {
 
         Movie existingMovie = new Movie();
         existingMovie.setDescription("Filme de 2004");
-        existingMovie.setNota(8.9);
+        existingMovie.setRating(8.9);
         existingMovie.setTitle("A Ilha");
         existingMovie.setUpdatedAt(LocalDate.now());
         existingMovie.setCreatedAt(LocalDate.now());
@@ -84,7 +84,7 @@ public class MovieServiceTest {
         movie.setCreatedAt(movieDTO.getCreatedAt());
         movie.setUpdatedAt(movieDTO.getUpdatedAt());
         movie.setTitle(movieDTO.getTitle());
-        movie.setNota(movieDTO.getNota());
+        movie.setRating(movieDTO.getRating());
         movie.setUserId(movieDTO.getUserId());
 
         when(movieRepository.save(existingMovie)).thenReturn(movie);
@@ -101,7 +101,7 @@ public class MovieServiceTest {
         Long id = 1L;
         Movie existingMovie = new Movie();
         existingMovie.setDescription("Filme de 2004");
-        existingMovie.setNota(8.9);
+        existingMovie.setRating(8.9);
         existingMovie.setTitle("A Ilha");
         existingMovie.setUpdatedAt(LocalDate.now());
         existingMovie.setCreatedAt(LocalDate.now());

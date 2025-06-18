@@ -1,0 +1,39 @@
+# A versão não é mais necessária, mas é bom saber que a sintaxe é da v3+
+services:
+  # Serviço para a aplicação Spring Boot
+  app:
+    # Constrói a imagem a partir do Dockerfile no diretório atual (.)
+    build: .
+    container_name: movies-backend-app
+    # Mapeia a porta 8080 do contêiner para a porta 8080 da sua máquina
+    ports:
+      - "8080:8080"
+    # Garante que o banco de dados seja iniciado antes da aplicação
+    depends_on:
+      - db
+    # Passa as configurações como variáveis de ambiente, sobrescrevendo o application.properties
+    environment:
+      - spring.datasource.url=jdbc:mysql://db:3306/taskdb?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - spring.datasource.username=root
+      - spring.datasource.password=secret
+      - security.jwt.secret-key=eyJhbGciOiJIUzUxMiJ9eyJzdWIiOiJzYW0iLCJleHAiOjE2MDgwNjM1NTUsImlhdCI6MTYwODA0NTU1NX0
+      - open-api.dev-url=http://localhost:8080
+
+  # Serviço para o banco de dados MySQL
+  db:
+    image: mysql:8.0
+    container_name: movies-backend-db
+    # Mapeia a porta 3306 do contêiner para a 3307 da sua máquina, como no seu arquivo original
+    ports:
+      - "3307:3306"
+    # Configurações iniciais do banco de dados
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=taskdb
+    # Garante que os dados do banco persistam mesmo que o contêiner seja removido
+    volumes:
+      - db-data:/var/lib/mysql
+
+# Define o volume nomeado para persistência do banco
+volumes:
+  db-data:

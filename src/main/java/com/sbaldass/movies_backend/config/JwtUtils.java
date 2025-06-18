@@ -24,7 +24,7 @@ public class JwtUtils {
     @Autowired
     public JwtUtils(Environment environment) {
         this.environment = environment;
-        this.jwtParser = Jwts.parser().setSigningKey(environment.getProperty("api.secret"));
+        this.jwtParser = Jwts.parser().setSigningKey(environment.getProperty("security.jwt.secret-key"));
     }
 
     public String createToken(User user) {
@@ -36,7 +36,7 @@ public class JwtUtils {
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(tokenValidity)
-                .signWith(SignatureAlgorithm.HS256, environment.getProperty("api.secret"))
+                .signWith(SignatureAlgorithm.HS256, environment.getProperty("security.jwt.secret-key"))
                 .compact();
     }
 
